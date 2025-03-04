@@ -2,6 +2,8 @@
 
   <section v-if="data" class="destination">
 
+    <button class="btn go-back" @click="router.back()">Go Back</button>
+
     <h1 class="destination-name">{{ data.name }}</h1>
 
     <div class="destination-details">
@@ -25,7 +27,7 @@
         :key="experience.slug"
         :to="{
           name: 'experience.show',
-          params: { slug: experience.slug, id: route.params.id },
+          params: { experienceSlug: experience.slug, id: route.params.id },
         }"
       >
 
@@ -34,6 +36,8 @@
       </router-link>
 
     </div>
+
+    <router-view />
 
   </section>
 

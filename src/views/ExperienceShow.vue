@@ -23,7 +23,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const data = ref(null)
 const id = computed(() => route.params.id)
-const slug = computed(() => route.params.slug)
+const slug = computed(() => route.params.experienceSlug)
 
 function fetchData() {
   const destination = dataSource.destinations.find(

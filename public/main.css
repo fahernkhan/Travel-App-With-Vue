@@ -4,9 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  padding: 0;
-  margin: 0;
-  margin-top: 150px;
+  margin-top: 2000px;
   background: #eee;
 }
 #app {
@@ -20,7 +18,7 @@ a:visited {
   color: #2c3e50;
 }
 .container {
-  margin: 0 64px;
+  margin: 100px auto;
   width: 100%;
 }
 
@@ -32,11 +30,15 @@ a:visited {
   display: flex;
   justify-content: space-between;
 }
-/* 
+
 .destination {
-  display: flex;
-  justify-content: space-between;
-} */
+  display: inline-block;
+  text-align: start;
+}
+
+h1 {
+  text-align: center;
+}
 
 /* Navigation */
 #nav {

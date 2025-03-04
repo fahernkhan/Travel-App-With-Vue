@@ -9,11 +9,13 @@ const router = createRouter({
       path: '/destination/:id/:slug',
       name: 'destination.show',
       component: () => import('@/views/DestinationShow.vue'),
-    },
-    {
-      path: '/experience/:id/:slug',
-      name: 'experience.show',
-      component: () => import('@/views/ExperienceShow.vue'),
+      children: [
+        {
+          path: ':experienceSlug',
+          name: 'experience.show',
+          component: () => import('@/views/ExperienceShow.vue'),
+        },
+      ],
     },
   ],
   // linkActiveClass: 'vue-school-active-link',    <-- for customizing active class
