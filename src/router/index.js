@@ -17,6 +17,11 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/views/NotFound.vue'),
+    },
   ],
   // linkActiveClass: 'vue-school-active-link',    <-- for customizing active class
 })
