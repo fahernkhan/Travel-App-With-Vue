@@ -10,14 +10,10 @@ COPY . .
 
 RUN npm run build --prod
 
-# Use nginx to serve the static files
 FROM nginx:alpine
 
-# Copy the built files to the nginx html folder
-COPY --from=build /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80
+COPY --from=build-stage /app/dist/Travel-App-With-Vue /usr/share/nginx/html
+
 EXPOSE 80
-
-# Start nginx server
-CMD ["nginx", "-g", "daemon off;"]
