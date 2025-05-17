@@ -1,25 +1,23 @@
-# Use an official node image as the build environment
-FROM node:18-alpine AS build
+FROM node:20 as build-stage
 
-# Set working directory
 WORKDIR /app
 
-# Install dependencies
 COPY package*.json ./
+
 RUN npm install
 
-# # Copy the rest of the application and build it
-# COPY . .
-# RUN npm run build
+COPY . .
 
-# # Use nginx to serve the static files
-# FROM nginx:alpine
+RUN npm run build --prod
 
-# # Copy the built files to the nginx html folder
-# COPY --from=build /app/build /usr/share/nginx/html
+# Use nginx to serve the static files
+FROM nginx:alpine
 
-# # Expose port 80
-# EXPOSE 80
+# Copy the built files to the nginx html folder
+COPY --from=build /app/build /usr/share/nginx/html
 
-# # Start nginx server
-# CMD ["nginx", "-g", "daemon off;"]
+# Expose port 80
+EXPOSE 80
+
+# Start nginx server
+CMD ["nginx", "-g", "daemon off;"]
