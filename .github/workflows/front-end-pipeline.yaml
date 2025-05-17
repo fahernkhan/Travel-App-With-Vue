@@ -29,8 +29,8 @@ jobs:
       - name: Build & Push to DockerHub
         uses: docker/build-push-action@v5
         with:
-          context: travel-app-with-vue
-          file: Dockerfile
+          context: .
           push: true
-          platforms: linux/amd64
           tags: ${{ secrets.DOCKER_USERNAME }}/travel-ui:latest,${{ secrets.DOCKER_USERNAME }}/travel-ui:${{ steps.extract_version.outputs.VERSION }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
