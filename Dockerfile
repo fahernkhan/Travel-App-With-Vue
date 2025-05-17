@@ -8,18 +8,18 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the application and build it
-COPY . .
-RUN npm run build
+# # Copy the rest of the application and build it
+# COPY . .
+# RUN npm run build
 
-# Use nginx to serve the static files
-FROM nginx:alpine
+# # Use nginx to serve the static files
+# FROM nginx:alpine
 
-# Copy the built files to the nginx html folder
-COPY --from=build /app/build /usr/share/nginx/html
+# # Copy the built files to the nginx html folder
+# COPY --from=build /app/build /usr/share/nginx/html
 
-# Expose port 80
-EXPOSE 80
+# # Expose port 80
+# EXPOSE 80
 
-# Start nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# # Start nginx server
+# CMD ["nginx", "-g", "daemon off;"]
