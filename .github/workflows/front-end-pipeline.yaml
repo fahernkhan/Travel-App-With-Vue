@@ -32,5 +32,3 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/travel-ui:latest
             ${{ secrets.DOCKER_USERNAME }}/travel-ui:${{ steps.extract_version.outputs.VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
